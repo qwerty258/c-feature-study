@@ -17,12 +17,18 @@
 //
 
 #include <stdio.h>
-#include <stdint.h>
+#include <math.h>
+
+int test_func(void)
+{
+    float a = 1.32435f;
+    int b = 3;
+    printf("%f\n", a * b);
+    return lroundf(a * b);
+}
+
 int main()
 {
-    uint16_t a = 0;
-    uint16_t b = 65535;
-    int16_t ret = a - b;
-    printf("%d\n", ret);
+    printf("%d\n", test_func());
     return 0;
 }
