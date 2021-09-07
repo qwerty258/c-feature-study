@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 
 sizeof_data_types
+sequence_number
 
