@@ -25,16 +25,25 @@ SOFTWARE.
 #include <stdio.h>
 #include <math.h>
 
-int test_func(void)
+int return_without_round(void)
 {
     float a = 1.32435f;
     int b = 3;
-    printf("%f\n", a * b);
+    printf("in return_without_round(): %f\n", a * b);
+    return (a * b);
+}
+
+int return_with_round(void)
+{
+    float a = 1.32435f;
+    int b = 3;
+    printf("in return_with_round() %f\n", a * b);
     return lroundf(a * b);
 }
 
 int main()
 {
-    printf("%d\n", test_func());
+    printf("return without round: %d\n", return_without_round());
+    printf("return with round: %d\n", return_with_round());
     return 0;
 }
