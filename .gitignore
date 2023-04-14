@@ -56,3 +56,4 @@ sequence_number
 atomic_assembly
 
 *.s
+*.i

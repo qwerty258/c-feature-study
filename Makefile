@@ -1,36 +1,31 @@
-all: 								\
-atomic_assembly.s					\
-enum_in_struct_with_bit_field.elf	\
-macro_vs_const.s					\
-return_float_to_int.elf				\
-sequence_number.elf					\
-sizeof_data_types.elf				\
-strncpy_edge_case.elf				\
+ELFS=\
+enum_in_struct_with_bit_field.elf \
+return_float_to_int.elf \
+sequence_number.elf \
+sizeof_data_types.elf \
+strncpy_edge_case.elf
+
+ASMS=\
+atomic_assembly.s \
+macro_vs_const.s \
 void_function_param.s
 
-atomic_assembly.s: atomic_assembly.c
-	$(CC) -Wa,-adhln -g atomic_assembly.c > atomic_assembly.s
+# $(info ${ELFS})
+# $(info ${ASMS})
 
-enum_in_struct_with_bit_field.elf: enum_in_struct_with_bit_field.c
-	$(CC) -o enum_in_struct_with_bit_field.elf enum_in_struct_with_bit_field.c
+ELF_SRC=$(ELFS:.elf=.c)
+ASM_SRC=$(ASMS:.s=.c)
 
-macro_vs_const.s: macro_vs_const.c
-	$(CC) -Wa,-adhln -g macro_vs_const.c > macro_vs_const.s
+# $(info ${ELF_SRC})
+# $(info ${ASM_SRC})
 
-return_float_to_int.elf: return_float_to_int.c
-	$(CC) -o return_float_to_int.elf return_float_to_int.c -lm
+all: $(ELFS) $(ASMS)
 
-sequence_number.elf: sequence_number.c
-	$(CC) -o sequence_number.elf sequence_number.c
+%.s: %.c
+	$(CC) -Wa,-adhln -g $< > $@
 
-sizeof_data_types.elf: sizeof_data_types.c
-	$(CC) -o sizeof_data_types.elf sizeof_data_types.c
-
-void_function_param.s: void_function_param.c
-	$(CC) -Wa,-adhln -g void_function_param.c > void_function_param.s
-
-strncpy_edge_case.elf: strncpy_edge_case.c
-	$(CC) -o strncpy_edge_case.elf strncpy_edge_case.c
+%.elf: %.c
+	$(CC) -save-temps -lm -o $@ $<
 
 clean:
-	rm *.elf *.s
+	rm a.out *.elf *.s *.i
