@@ -5,6 +5,7 @@ macro_vs_const.s					\
 return_float_to_int.elf				\
 sequence_number.elf					\
 sizeof_data_types.elf				\
+strncpy_edge_case.elf				\
 void_function_param.s
 
 atomic_assembly.s: atomic_assembly.c
@@ -27,6 +28,9 @@ sizeof_data_types.elf: sizeof_data_types.c
 
 void_function_param.s: void_function_param.c
 	$(CC) -Wa,-adhln -g void_function_param.c > void_function_param.s
+
+strncpy_edge_case.elf: strncpy_edge_case.c
+	$(CC) -o strncpy_edge_case.elf strncpy_edge_case.c
 
 clean:
 	rm *.elf *.s
