@@ -25,7 +25,7 @@ all: $(ELFS) $(ASMS)
 	$(CC) -Wa,-adhln -g $< > $@
 
 %.elf: %.c
-	$(CC) -save-temps -lm -o $@ $<
+	$(CC) -save-temps -o $@ $< -lm
 
 clean:
 	rm a.out *.elf *.s *.i
