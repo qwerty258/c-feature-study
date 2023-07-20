@@ -28,4 +28,4 @@ all: $(ELFS) $(ASMS)
 	$(CC) -save-temps -o $@ $< -lm
 
 clean:
-	rm a.out *.elf *.s *.i
+	rm a.out *.elf *.s *.i *.o
