@@ -1,5 +1,6 @@
 ELFS=\
 enum_in_struct_with_bit_field.elf \
+offsetof.elf \
 return_float_to_int.elf \
 sequence_number.elf \
 sizeof_data_types.elf \
