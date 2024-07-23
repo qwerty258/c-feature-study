@@ -1,4 +1,5 @@
 ELFS=\
+dynamic_array.elf \
 enum_in_struct_with_bit_field.elf \
 offsetof.elf \
 return_float_to_int.elf \
