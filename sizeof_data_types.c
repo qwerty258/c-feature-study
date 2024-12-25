@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdint.h>
 #include <time.h>
 #include <sys/types.h>
@@ -49,6 +50,7 @@ int main(int argc, char *argv[])
     PRINT_SIZE(((struct timespec *)0)->tv_nsec);
     PRINT_SIZE(size_t);
     PRINT_SIZE(ssize_t);
+    PRINT_SIZE(bool);
     PRINT_SIZE(char);
     PRINT_SIZE(unsigned char);
     PRINT_SIZE(short);
